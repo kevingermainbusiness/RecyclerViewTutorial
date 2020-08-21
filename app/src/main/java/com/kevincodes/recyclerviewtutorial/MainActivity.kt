@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun initialize(){
         val mPlacesData = ArrayList<PlacesData>()
-        var mDisplayedPlacesList: MutableList<PlacesData> = ArrayList()
+        val mDisplayedPlacesList: MutableList<PlacesData> = ArrayList()
 
         // list of data going in the RecyclerView Adapter
         mPlacesData.add(PlacesData(R.drawable.ic_android_black_24dp,"Chicago","Cool city","U.S.A"))
