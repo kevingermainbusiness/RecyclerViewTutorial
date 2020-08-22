@@ -1,7 +1,7 @@
 # RecyclerViewTutorial
 A Basic RecyclerView Tutorial to help anyone get started with android development.
 
-![A small screenshot showcasing how the app looks](https://github.com/kevingermainbusiness/RecyclerViewTutorial/blob/master/app/src/main/res/drawable-v24/Screen%20Shot%202020-08-21%20at%2015.23.56.png)
+![A small screenshot showcasing how the app looks](https://github.com/kevingermainbusiness/RecyclerViewTutorial/blob/master/app/src/main/res/drawable-v24/Screen_Shot_2020_08_21_at_15_23_56.png)
 
 ## Built with
 
