@@ -9,21 +9,27 @@ import com.kevincodes.recyclerviewtutorial.R
 import com.kevincodes.recyclerviewtutorial.models.PlacesData
 import kotlinx.android.synthetic.main.places_row.view.*
 
-class PlaceAdapter(private val mContext: Context) :
+class PlaceAdapter(private val mContext: Context, private val clickListener:OnItemClickListener) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    private var mItemsData:List<PlacesData> = ArrayList()
-
-    private class PlacesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(place: PlacesData){
-            itemView.icon.setImageResource(place.icon)
-            itemView.title.text = place.place
-            itemView.desc.text = place.desc
-            itemView.row_country.text = place.country
-        }
-    }
+    private var mItemsData: List<PlacesData> = ArrayList()
 
     fun submitList(list: List<PlacesData>){
         mItemsData = list
+    }
+
+    private class PlacesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        fun bind(place: PlacesData, clickAction:OnItemClickListener){
+            itemView.icon.setImageResource(place.icon)
+            itemView.title.text = place.title
+            itemView.desc.text = place.desc
+            itemView.row_country.text = place.country
+
+            itemView.setOnClickListener { clickAction.onItemClick(adapterPosition) }
+        }
+    }
+
+    interface OnItemClickListener{
+        fun onItemClick(position: Int)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -33,13 +39,13 @@ class PlaceAdapter(private val mContext: Context) :
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        return when(holder) {
-            is PlacesViewHolder ->{
-                holder.bind(mItemsData[position])
+        return when(holder){
+            is PlacesViewHolder -> {
+                holder.bind(mItemsData[position],clickListener)
             }
             else -> return;
         }
     }
 
-    override fun getItemCount(): Int = mItemsData.size
+    override fun getItemCount():Int = mItemsData.size
 }
